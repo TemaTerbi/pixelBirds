@@ -30,6 +30,8 @@ def run():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 game_running = False
+            elif event.type == QUIT:
+                return sys.exit()
 
 
 run()
