@@ -30,12 +30,19 @@ def run():
     left = right = False
     up = False
 
+    def render_screen():
+        pygame.display.update()
+        screen.fill(BLUE)
+
+    def render_bird():
+        bird.update(left, right, up)
+        bird.draw(screen)
+
     # Cycle for game event
     game_running = True
     while game_running:
         clock.tick(FPS)
-        bird.update(left, right, up)
-        bird.draw(screen)
+        render_bird()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 game_running = False
@@ -53,7 +60,9 @@ def run():
                 right = False
             elif event.type == QUIT:
                 return sys.exit()
-        pygame.display.update()
+        render_screen()
+
+
 
 
 run()
